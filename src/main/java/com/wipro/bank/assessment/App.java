@@ -15,15 +15,29 @@ public class App {
 	}	
 
 	public Account getAccountDetailsByID(int id){
-		Account acc=null;		
+		Account acc=null;
+		for(Account a:accounts){
+			if(a.getAccountID()==id){
+				acc=a;
+			}
+		}             
 		return acc;
 	}
-	
+
 	public List<Account> getAccountDetailsByBalance(double amount){	
 		List<Account> accountlist=new ArrayList<Account>();
-		  return accountlist;
-		}	
-	
+		for(Account account:accounts){                                               
+			if(account.getBalance()>=amount){
+				accountlist.add(account);
+			}
+		}
+		if(accountlist.size()==0){
+			accountlist=null;
+		}
+		return accountlist;
+	}
+
+		
 	public static void main( String[] args )
     {       
        accounts.add(new Account(1,"acc1",101.11));
